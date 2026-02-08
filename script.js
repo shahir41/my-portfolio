@@ -1,14 +1,15 @@
-const sections = document.querySelectorAll('.section');
+const text =
+  "Undergraduate CSE Student at AIUB | Interested in Software & Web Development | Dedicated Learner with Strong Fundamentals";
 
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
+let index = 0;
+const speed = 50;
 
-  sections.forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    if (top < trigger) {
-      section.style.opacity = 1;
-      section.style.transform = 'translateY(0)';
-      section.style.transition = 'all 0.8s ease';
-    }
-  });
-});
+function typeEffect() {
+  if (index < text.length) {
+    document.querySelector(".typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, speed);
+  }
+}
+
+window.onload = typeEffect;
